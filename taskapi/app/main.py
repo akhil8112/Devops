@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+
 app = FastAPI(title="Task API")
 
 
@@ -21,6 +22,11 @@ tasks = [
 @app.get("/")
 def home():
     return {"message": "Task API is running"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "healthy"}
 
 
 @app.get("/tasks")
