@@ -41,7 +41,13 @@ def create_task(task: Task):
         "title": task.title,
         "completed": task.completed
     }
+    new_task2= {
+        "id": len(tasks) + 1,
+        "title": task.title,
+        "completed": task.completed
+    }
 
     tasks.append(new_task)
+    tasks.append(new_task2)
 
     return new_task
