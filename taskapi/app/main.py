@@ -41,13 +41,17 @@ def create_task(task: Task):
         "title": task.title,
         "completed": task.completed
     }
-    new_task2= {
-        "id": len(tasks) + 1,
-        "title": task.title,
-        "completed": task.completed
-    }
-
+   
     tasks.append(new_task)
-    tasks.append(new_task2)
+    
 
     return new_task
+
+@app.delete("/tasks/{task_id}")
+def delete_task(task_id: int):
+    for task in tasks:
+        if task["id"] == task_id:
+            tasks.remove(task)
+            return {"message": "Task deleted successfully"}
+
+    return {"message": "Task not found"}

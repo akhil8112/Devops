@@ -31,3 +31,9 @@ def test_create_task():
 
     assert response.status_code == 200
     assert response.json()["title"] == "Learn GitHub Actions"
+    
+def test_delete_task():
+    response = client.delete("/tasks/1")
+
+    assert response.status_code == 200
+    assert response.json()["message"] == "Task deleted successfully"
