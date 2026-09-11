@@ -1,6 +1,13 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+
+load_dotenv()
+
+APP_ENV = os.getenv("APP_ENV", "development")
 
 app = FastAPI(title="Task API")
 
@@ -26,8 +33,10 @@ def home():
 
 @app.get("/health")
 def health():
-    return {"status": "healthy"}
-
+    return {
+        "status": "healthy",
+        "environment": APP_ENV
+    }
 
 @app.get("/tasks")
 def get_tasks():
